@@ -1,0 +1,91 @@
+/*
+Time limit : 1s
+Memory limit : 64mb
+
+Description
+Xima has finally made a robot that can move in 2-dimensional space.
+Initially, the robot is located at the point (0,0). The robot is given a series of operations. Each operation is a capital letter, explained below:
+R: Right → the robot moves from (x, y) to (x+1, y).
+L: Left → the robot moves from (x, y) to (x-1, y).
+U: Up → the robot moves from (x, y) to (x, y+1).
+D: Down → the robot moves from (x, y) to (x, y-1).
+Any other operation will be ignored by the robot.
+The series of operations will be given to the robot in the form of a string S. After every operation has been done, the robot will stop.
+However, the robot moves as slow as a snail, and Xima is impatient to wait for the robot to finish every operation given.
+Xima wants to know where the robot will stop after it has done every operation. Can you help Xima?
+
+Input Format
+The input is given in the following format:
+S
+Output Format
+Two integers denoting the coordinate where the robot will stop.
+
+Sample Input 1
+RUDDLDUR
+Sample Output 1
+1 -1
+
+Sample Input 2
+ABRUMNURYZ
+Sample Output 2
+2 2
+
+Explanation
+In the first sample, the movement of the robot will be as follows:
+R: (0, 0) to (1, 0)
+U: (1, 0) to (1, 1)
+D: (1, 1) to (1, 0)
+D: (1, 0) to (1, -1)
+L: (1, -1) to (0, -1)
+D: (0, -1) to (0, -2)
+U: (0, -2) to (0, -1)
+R: (0, -1) to (1, -1), and the robot stops.
+Therefore, the output is 1 -1.
+
+In the second sample, characters other than R, L, U, and D are ignored by the robot, so it will only execute the third, fourth, seventh, and eighth operations, 
+which are R, U, U, and R.
+
+Constraints
+1 ≤ |S| ≤ 100, where |S| is the length of the string S.
+S contains capital letters only (the letters 'A' - 'Z').
+*/
+
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <array>
+#include <fstream>
+#include <iomanip>
+#include <cstring>
+
+using namespace std;
+string command;
+int x = 0, y = 0;
+int main()
+{
+    cin >> command;
+    for (int i = 0; i < command.size(); i++)
+    {
+        if (command[i] == 'R' || command[i] == 'r')
+        {
+            x++;
+        }
+        else if (command[i] == 'L' || command[i] == 'l')
+        {
+            x--;
+        }
+        else if (command[i] == 'U' || command[i] == 'u')
+        {
+            y++;
+        }
+        else if (command[i] == 'D' || command[i] == 'd')
+        {
+            y--;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    cout << x << " " << y;
+}
